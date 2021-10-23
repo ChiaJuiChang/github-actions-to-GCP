@@ -29,11 +29,15 @@ jobs:
     - name: Info
       run: gcloud info
 
+    - name: ls
+      run: ls -al
+
     # Build and push image to Google Artifact Registry
     - name: Build
       run: |-
         gcloud builds submit \
-          --tag "asia-east1-docker.pkg.dev/${PROJECT_ID}/$SERVICE_NAME:$GITHUB_SHA"
+          --tag "asia-east1-docker.pkg.dev/${PROJECT_ID}/$SERVICE_NAME:$GITHUB_SHA" \
+          --file ./build/Dockerfile
     # Deploy image to Cloud Run
     - name: Deploy
       run: |-
