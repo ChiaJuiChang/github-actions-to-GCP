@@ -33,7 +33,7 @@ jobs:
     - name: Build
       run: |-
         gcloud builds submit \
-          --build-arg=REVISION_ID=${REVISION_ID} \
+          --build-arg=REVISION_ID=$GITHUB_SHA \
           --tag "asia-east1-docker.pkg.dev/${PROJECT_ID}/$SERVICE_NAME:$GITHUB_SHA"
     # Deploy image to Cloud Run
     - name: Deploy
