@@ -29,8 +29,8 @@ jobs:
     - name: Info
       run: gcloud info
 
-    - name: ls
-      run: ls -al
+    - name: GITHUB_SHA
+      run: echo ${GITHUB_SHA}
 
     # Build and push image to Google Artifact Registry
     - name: Build
