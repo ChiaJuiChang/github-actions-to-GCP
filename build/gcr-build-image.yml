@@ -2,9 +2,9 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args:
       - 'build'
-      - '--build-arg=REVISION_ID=${REVISION_ID}'
-      - '--tag=asia-east1-docker.pkg.dev/${PROJECT_ID}/$SERVICE_NAME:${REVISION_ID}'
+      - '--build-arg=REVISION_ID=${_REVISION_ID}'
+      - '--tag=asia-east1-docker.pkg.dev/${PROJECT_ID}/${_SERVICE_NAME}:${_REVISION_ID}'
       - '--file=./build/Dockerfile'
       - '.'
 images:
-  - 'asia-east1-docker.pkg.dev/${PROJECT_ID}/vue-landing-page-repo/vue-landing-page:latest'
+  - 'asia-east1-docker.pkg.dev/${PROJECT_ID}/${_SERVICE_NAME}:${_REVISION_ID}'
