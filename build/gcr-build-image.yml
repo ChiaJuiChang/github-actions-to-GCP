@@ -3,8 +3,8 @@ steps:
     args:
       - 'build'
       - '--build-arg=REVISION_ID=${REVISION_ID}'
-      - '--tag=asia-east1-docker.pkg.dev/${PROJECT_ID}/github-actions-to-GCP'
+      - '--tag=asia-east1-docker.pkg.dev/${PROJECT_ID}/github-actions-to-GCP:latest'
       - '--file=./build/Dockerfile'
       - '.'
 images:
-  - 'asia-east1-docker.pkg.dev/${PROJECT_ID}/github-actions-to-GCP'
+  - 'asia-east1-docker.pkg.dev/${PROJECT_ID}/github-actions-to-GCP:latest'
