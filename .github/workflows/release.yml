@@ -36,8 +36,9 @@ jobs:
     - name: Build
       run: |-
         gcloud builds submit \
-          --tag "asia-east1-docker.pkg.dev/${PROJECT_ID}/$SERVICE_NAME:$GITHUB_SHA" \
-          --file ./build/Dockerfile
+          --config ./build/gcr-build-image.yaml
+          --substitutions=REVISION_ID=$GITHUB_SHA"
+
     # Deploy image to Cloud Run
     - name: Deploy
       run: |-
