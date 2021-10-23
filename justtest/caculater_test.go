@@ -18,7 +18,7 @@ func TestAddUpTwoNumbers(t *testing.T) {
 				a: 1,
 				b: 2,
 			},
-			want: 4,
+			want: 3,
 		},
 	}
 	for _, tt := range tests {
