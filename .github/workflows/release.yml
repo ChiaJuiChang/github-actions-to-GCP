@@ -14,9 +14,6 @@ jobs:
 
   release:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./build
     steps:
     - uses: actions/checkout@v2
 
@@ -39,7 +36,7 @@ jobs:
     - name: Build
       run: |-
         gcloud builds submit \
-          --config ./gcr-build-image.yml
+          --config ./build/gcr-build-image.yml
           --substitutions=REVISION_ID=${GITHUB_SHA}
     # Deploy image to Cloud Run
     - name: Deploy
