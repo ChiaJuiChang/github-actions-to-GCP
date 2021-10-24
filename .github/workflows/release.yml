@@ -14,6 +14,9 @@ jobs:
 
   release:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./build
     steps:
     - uses: actions/checkout@v2
 
@@ -28,9 +31,6 @@ jobs:
     # Print gcloud info
     - name: Info
       run: gcloud info
-
-    - name: go to Dockerfile directory
-      run: cd ./build/
 
     - name: ls
       run: ls -al
