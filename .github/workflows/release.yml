@@ -41,7 +41,7 @@ jobs:
     # Deploy image to Cloud Run
     - name: Deploy
       run: |-
-        gcloud run deploy "$SERVICE_NAME" \
+        gcloud run deploy "REPO_NAME" \
           --region "$RUN_REGION" \
           --image "asia-east1-docker.pkg.dev/${PROJECT_ID}/${REPO_NAME}:$GITHUB_SHA" \
           --platform "managed" \
