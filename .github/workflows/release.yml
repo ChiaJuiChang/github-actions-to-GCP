@@ -30,7 +30,7 @@ jobs:
       run: gcloud info
 
     - name: go to Dockerfile directory
-        run: cd ./build
+      run: cd ./build
 
     - name: ls
       run: ls -al
