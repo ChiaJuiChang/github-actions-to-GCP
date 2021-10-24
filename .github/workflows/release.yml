@@ -29,14 +29,17 @@ jobs:
     - name: Info
       run: gcloud info
 
-    - name: GITHUB_SHA
-      run: echo ${GITHUB_SHA}
+    - name: go to Dockerfile directory
+        run: cd ./build
+
+    - name: ls
+      run: ls -al
 
     # Build and push image to Google Artifact Registry
     - name: Build
       run: |-
         gcloud builds submit \
-          --config ./build/gcr-build-image.yml
+          --config ./gcr-build-image.yml
           --substitutions=REVISION_ID=${GITHUB_SHA}
     # Deploy image to Cloud Run
     - name: Deploy
