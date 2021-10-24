@@ -43,7 +43,7 @@ jobs:
       run: |-
         gcloud run deploy "$REPO_NAME" \
           --region "$RUN_REGION" \
-          --image "asia-east1-docker.pkg.dev/${PROJECT_ID}/${REPO_NAME}:latest" \
+          --image "asia-east1-docker.pkg.dev/${PROJECT_ID}/${REPO_NAME}/github-actions-simple:latest" \
           --platform "managed" \
           --allow-unauthenticated
           
