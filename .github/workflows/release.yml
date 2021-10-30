@@ -35,8 +35,9 @@ jobs:
       run: |-
         gcloud builds submit \
           --config ./build/cloudbuild.yml \
-          --substitutions REVISION_ID=${GITHUB_SHA},_REPO_NAME=${REPO_NAME},_Tag=${TAG}
-#          --substitutions=_REPO_NAME=${REPO_NAME}
+          --substitutions REVISION_ID=${GITHUB_SHA} \
+          --substitutions _REPO_NAME=${REPO_NAME} \
+          --substitutions _Tag=${TAG}
 
     # Deploy image to Cloud Run
     - name: Deploy
