@@ -3,8 +3,8 @@ steps:
     args:
       - 'build'
       - '--build-arg=REVISION_ID=${REVISION_ID}'
-      - '--tag=asia-east1-docker.pkg.dev/${PROJECT_ID}/${_REPO_NAME}/${REVISION_ID}'
+      - '--tag=asia-east1-docker.pkg.dev/${PROJECT_ID}/${_REPO_NAME}/backend-application:${_TAG}'
       - '--file=./Dockerfile'
       - '.'
 images:
-  - 'asia-east1-docker.pkg.dev/${PROJECT_ID}/backend-repo/github-actions-simple:latest'
+  - 'asia-east1-docker.pkg.dev/${PROJECT_ID}/${_REPO_NAME}/backend-application:${_TAG}'
