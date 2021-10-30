@@ -7,7 +7,7 @@ on:
 
 env:
   PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
-  REPO_NAME: github-actions-simple-web
+  REPO_NAME: backend-repo
   RUN_REGION: asia-east1
 
 jobs:
@@ -29,21 +29,19 @@ jobs:
     - name: Info
       run: gcloud info
 
-    - name: ls
-      run: ls -al
-
     # Build and push image to Google Artifact Registry
     - name: Build
       run: |-
         gcloud builds submit \
-          --config ./build/gcr-build-image.yml \
+          --tag "asia-east1-docker.pkg.dev/${PROJECT_ID}/${REPO_NAME}/${GITHUB_SHA}" \
           --substitutions=REVISION_ID=${GITHUB_SHA}
+
     # Deploy image to Cloud Run
     - name: Deploy
       run: |-
         gcloud run deploy "$REPO_NAME" \
           --region "$RUN_REGION" \
-          --image "asia-east1-docker.pkg.dev/${PROJECT_ID}/${REPO_NAME}/github-actions-simple:latest" \
+          --image "asia-east1-docker.pkg.dev/${PROJECT_ID}/${REPO_NAME}/${GITHUB_SHA}" \
           --platform "managed" \
           --allow-unauthenticated
           
